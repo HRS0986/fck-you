@@ -7,8 +7,11 @@ function App() {
     const searchParams = new URLSearchParams(document.location.search);
     const name = searchParams.get('fucker') || "Bitch";
     const isCreate = searchParams.get('admin') === '1';
-    const decodedName = decodeURIComponent(name);
-    const decryptedName = Encrypt(decodedName, -SHIFT);
+    let decryptedName = name;
+    if (name !== 'Bitch') {
+        const decodedName = decodeURIComponent(name);
+        decryptedName = Encrypt(decodedName, -SHIFT);
+    }
     return (
         <div className="sign">
             {!isCreate &&
